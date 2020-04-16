@@ -27,8 +27,8 @@ namespace MassTransitBlazorSyncContext
             });
 
             var sp = services.BuildServiceProvider();
-            var busControl = sp.GetService<IBusControl>();
-            busControl.Start();
+            var busControl = sp.GetRequiredService<IBusControl>();
+            await busControl.StartAsync();
 
             // start program logic
             _clientFactory = sp.GetService<IClientFactory>();
